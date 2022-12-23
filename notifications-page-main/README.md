@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](notifications-screenshot.jpg)
+![](notifications-screenshot.png)
 
 
 ### Links
