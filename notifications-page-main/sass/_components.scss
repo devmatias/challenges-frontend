@@ -1,0 +1,91 @@
+.notifications {
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+
+    &__first-line {
+        display: flex;
+        align-items: center;
+    }
+
+    &__not-read {
+        background-color: #f6fafd;
+    }
+
+    &__img-notification {
+        box-sizing: content-box;
+        height: 4rem;
+        padding: 1rem;
+        align-self: flex-start;
+    }
+
+    &__text-group {
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+    }
+
+    &__text {
+        font-weight: 300;
+        font-size: 1.2rem;
+        color: #666;
+        flex: 1;
+        
+        & span {
+            color: red;
+        }
+
+    }
+
+    &__profile-link:link,
+    &__profile-link:visited {
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+    }
+
+    &__profile-link:hover {
+        color: navy;
+    }
+
+    &__post-link:link,
+    &__post-link:visited {
+        font-weight: 700;
+        text-decoration: none;
+        color: #666;
+    }
+
+    &__post-link:hover {
+        color: navy;
+    }
+
+
+    &__time {
+        color: #999;
+        font-size: 1.1rem;
+    }
+
+    &__private-msg {
+        background-color: #f9fafe;
+        padding: 1rem;
+        margin-left: 6rem;
+        margin-top: -.8rem;
+        margin-right: 1rem;
+        border-radius: .5rem;
+
+
+        &--text {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #666;
+        }
+    }
+
+    &__post-picture {
+        height: 4rem;
+
+        &--link {
+            padding: 1rem;
+        }
+    }
+}

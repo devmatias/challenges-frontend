@@ -1,0 +1,54 @@
+.container {
+    max-width: 50rem;
+    border-radius: 1rem;
+    background-color: white;
+    margin: 4rem auto;
+    padding: 2rem;
+
+    display: grid;
+    grid-auto-rows: auto;
+    row-gap: 1rem;
+
+    @media only screen and (max-width: 500px) {
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    &__text-1 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        display: flex;
+        gap: 1rem;
+
+        & span {
+            background-color: navy;
+            color: white;
+            height: 2rem;
+            width: 2.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: .5rem;
+            font-size: 1.3rem;
+        }
+    }
+
+    &__mark-as-read {
+        color: #666;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all .2s;
+
+        &:hover {
+            color: navy;
+        }
+    }
+}
+
