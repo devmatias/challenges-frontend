@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/devmatias/challenges-frontend/tree/main/notifications-page-main)
+- Solution URL: [Notifications Page](https://github.com/devmatias/challenges-frontend/tree/main/notifications-page-main)
 
 ## My process
 
