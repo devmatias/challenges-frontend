@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="css/style.css">
   <title>Frontend Mentor | Multi-step form</title>
-
+  <script src="script.js" defer></script>
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
@@ -20,22 +20,22 @@
   <div class="content">
     <div class="sidebar">
       <div class="sidebar__steps">
-        <button type="text" class="sidebar__steps-position sidebar__steps-position--active">1</button>
+        <button type="button" class="sidebar__steps-position sidebar__steps-position--active">1</button>
         <p class="sidebar__steps-text">Step 1</p>
         <h3 class="sidebar__steps-data">Your info</h3>
       </div>
       <div class="sidebar__steps">
-        <button type="text" class="sidebar__steps-position">2</button>
+        <button type="button" class="sidebar__steps-position">2</button>
         <p class="sidebar__steps-text">Step 2</p>
         <h3 class="sidebar__steps-data">Select plan</h3>
       </div>
       <div class="sidebar__steps">
-        <button type="text" class="sidebar__steps-position">3</button>
+        <button type="button" class="sidebar__steps-position">3</button>
         <p class="sidebar__steps-text">Step 3</p>
         <h3 class="sidebar__steps-data">Add-ons</h3>
       </div>
       <div class="sidebar__steps">
-        <button type="text" class="sidebar__steps-position">4</button>
+        <button type="button" class="sidebar__steps-position">4</button>
         <p class="sidebar__steps-text">Step 4</p>
         <h3 class="sidebar__steps-data">Summary</h3>
       </div>
@@ -45,7 +45,7 @@
         <h1 class="form__title">Personal info</h1>
         <p class="form__subtitle">Please provide your name, email address, and phone number.</p>
       </div>
-      <div class="form__info-page form__main">
+      <div class="form__info-page form__main form__main--active">
         <label for="input-name" class="form__info-page--labels">Name</label>
         <input type="text" class="form__info-page--input" id="input-name" placeholder="e.g. Stephen King" required>
         <span class="form__info-page--name-validation">This field is required</span>
@@ -56,20 +56,35 @@
         <input type="text" class="form__info-page--input" id="input-phone" placeholder="e.g. +1 234 567 890" required>
         <span class="form__info-page--phone-validation">This field is required</span>
       </div>
-      <div class="form__select-plan form__main--active">
+      <div class="form__select-plan form__main ">
         <div class="form__plan form__plan--active">
           <svg class="form__plan-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g fill="none" fill-rule="evenodd"><circle cx="20" cy="20" r="20" fill="#FFAF7E"/><path fill="#FFF" fill-rule="nonzero" d="M24.995 18.005h-3.998v5.998h-2v-5.998H15a1 1 0 0 0-1 1V29a1 1 0 0 0 1 1h9.995a1 1 0 0 0 1-1v-9.995a1 1 0 0 0-1-1Zm-5.997 8.996h-2v-1.999h2v2Zm2-11.175a2.999 2.999 0 1 0-2 0v2.18h2v-2.18Z"/></g></svg>
           <h3 class="form__plan-mode">Arcade</h3>
           <p class="form__plan-price">$9/mo</p>
           <p class="form__plan-extra-time">2 months free</p>
         </div>
-        <div class="form__cards"></div>
-        <div class="form__cards"></div>
-        <div class="form__plan-period"></div>
+        <div class="form__plan">
+          <svg class="form__plan-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g fill="none" fill-rule="evenodd"><circle cx="20" cy="20" r="20" fill="#F9818E"/><path fill="#FFF" fill-rule="nonzero" d="M25.057 15H14.944C12.212 15 10 17.03 10 19.885c0 2.857 2.212 4.936 4.944 4.936h10.113c2.733 0 4.943-2.08 4.943-4.936S27.79 15 25.057 15ZM17.5 20.388c0 .12-.108.237-.234.237h-1.552v1.569c0 .126-.138.217-.259.217H14.5c-.118 0-.213-.086-.213-.203v-1.583h-1.569c-.126 0-.217-.139-.217-.26v-.956c0-.117.086-.213.202-.213h1.584v-1.554c0-.125.082-.231.203-.231h.989c.12 0 .236.108.236.234v1.551h1.555c.125 0 .231.083.231.204v.988Zm5.347.393a.862.862 0 0 1-.869-.855c0-.472.39-.856.869-.856.481 0 .87.384.87.856 0 .471-.389.855-.87.855Zm1.9 1.866a.86.86 0 0 1-.87-.852.86.86 0 0 1 .87-.855c.48 0 .87.38.87.855a.86.86 0 0 1-.87.852Zm0-3.736a.862.862 0 0 1-.87-.854c0-.472.39-.856.87-.856s.87.384.87.856a.862.862 0 0 1-.87.854Zm1.899 1.87a.862.862 0 0 1-.868-.855c0-.472.389-.856.868-.856s.868.384.868.856a.862.862 0 0 1-.868.855Z"/></g></svg>
+          <h3 class="form__plan-mode">Advanced</h3>
+          <p class="form__plan-price">$12/mo</p>
+          <p class="form__plan-extra-time">2 months free</p>
+        </div>
+        <div class="form__plan">
+          <svg class="form__plan-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g fill="none" fill-rule="evenodd"><circle cx="20" cy="20" r="20" fill="#483EFF"/><path fill="#FFF" fill-rule="nonzero" d="M26.666 13H13.334A3.333 3.333 0 0 0 10 16.333v7.193a3.447 3.447 0 0 0 2.14 3.24c1.238.5 2.656.182 3.56-.8L18.52 23h2.96l2.82 2.966a3.2 3.2 0 0 0 3.56.8 3.447 3.447 0 0 0 2.14-3.24v-7.193A3.333 3.333 0 0 0 26.666 13Zm-9.333 6H16v1.333a.667.667 0 0 1-1.333 0V19h-1.333a.667.667 0 0 1 0-1.334h1.333v-1.333a.667.667 0 1 1 1.333 0v1.333h1.333a.667.667 0 1 1 0 1.334Zm7.333 2a2.667 2.667 0 1 1 0-5.333 2.667 2.667 0 0 1 0 5.333ZM26 18.333a1.333 1.333 0 1 1-2.667 0 1.333 1.333 0 0 1 2.667 0Z"/></g></svg>
+          <h3 class="form__plan-mode">Pro</h3>
+          <p class="form__plan-price">$15/mo</p>
+          <p class="form__plan-extra-time">2 months free</p>
+        </div>
+        <div class="form__plan-period">
+          <p class="form__plan-time form__plan-time--active">Monthly</p>
+          <input class="form__plan-switch" type="checkbox" id="switch" >
+          <p class="form__plan-time">Yearly</p>
+
+        </div>
       </div>
       <div class="form__buttons-row">
-        <button class="form__back-button">Go Back</button>
-        <button class="form__next-step">Next Step</button>
+        <button type="button" class="form__back-button">Go Back</button>
+        <button type="button" class="form__next-step">Next Step</button>
       </div>
     </form>
   </div>

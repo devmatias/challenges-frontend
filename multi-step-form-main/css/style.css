@@ -80,7 +80,7 @@ body {
 .form {
   padding: 3rem 8rem 2rem;
   display: grid;
-  grid-template-rows: .3fr 1fr .3fr; }
+  grid-template-rows: 0.3fr 1fr 0.3fr; }
   .form__heading {
     display: flex;
     flex-direction: column; }
@@ -140,6 +140,67 @@ body {
       grid-column: 2 / 3; }
     .form__info-page--input:focus:invalid + .form__info-page--phone-validation {
       display: inline; }
+  .form__select-plan {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2fr 1fr;
+    row-gap: 3rem;
+    column-gap: 2rem; }
+  .form__plan {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    gap: 3px; }
+    .form__plan-img {
+      margin-bottom: auto; }
+    .form__plan-mode {
+      font-size: 1.6rem;
+      line-height: 1.8rem;
+      color: #0a254d; }
+    .form__plan-price {
+      color: #999;
+      font-size: 1.1rem;
+      line-height: 1.5rem; }
+    .form__plan-extra-time {
+      color: #0a254d;
+      line-height: 1.1rem; }
+    .form__plan-period {
+      grid-column: 1 / -1;
+      background-color: #f8f9fe;
+      border-radius: 0.8rem;
+      height: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.4rem; }
+    .form__plan-time {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #999; }
+      .form__plan-time--active {
+        color: #0a254d; }
+    .form__plan-switch {
+      appearance: none;
+      width: 4rem;
+      height: 2rem;
+      background-color: #0a254d;
+      border-radius: 2rem;
+      position: relative;
+      outline: none;
+      cursor: pointer; }
+      .form__plan-switch:before {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 1.2rem;
+        height: 1.2rem;
+        background: #fff;
+        border-radius: 2rem;
+        transition: transform 0.2s; }
+      .form__plan-switch:checked:before {
+        transform: translateX(2rem); }
   .form__buttons-row {
     display: flex;
     justify-content: space-between;
@@ -152,7 +213,7 @@ body {
       cursor: pointer; }
   .form__back-button {
     color: #666;
-    transition: all .2s;
+    transition: all 0.2s;
     background-color: transparent;
     opacity: 0;
     visibility: hidden; }
@@ -162,8 +223,8 @@ body {
     color: #fff;
     padding: 1.4rem 2.2rem;
     background-color: #0a254d;
-    border-radius: .5rem;
-    transition: all .2s; }
+    border-radius: 0.5rem;
+    transition: all 0.2s; }
     .form__next-step:hover {
       background-color: rgba(10, 37, 77, 0.75); }
 

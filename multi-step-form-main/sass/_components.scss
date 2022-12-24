@@ -55,9 +55,9 @@
   padding: 3rem 8rem 2rem;
 
   display: grid;
-  grid-template-rows: .3fr 1fr .3fr;
+  grid-template-rows: 0.3fr 1fr 0.3fr;
 
-
+  // HEADING
 
   &__heading {
     display: flex;
@@ -78,9 +78,13 @@
     display: none;
 
     &--active {
-        display: grid;
+      display: grid;
     }
   }
+
+  // MAIN CONTENT
+
+  // STEP 1
 
   &__info-page {
     grid-template-columns: 1fr 1fr;
@@ -157,6 +161,97 @@
     }
   }
 
+  //STEP 2
+
+  &__select-plan {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2fr 1fr;
+    row-gap: 3rem;
+    column-gap: 2rem;
+  }
+
+  &__plan {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 10px;
+    gap: 3px;
+
+    &-img {
+      margin-bottom: auto;
+    }
+
+    &-mode {
+      font-size: 1.6rem;
+      line-height: 1.8rem;
+      color: #0a254d;
+    }
+
+    &-price {
+      color: #999;
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
+
+    &-extra-time {
+      color: #0a254d;
+      line-height: 1.1rem;
+    }
+
+    &-period {
+      grid-column: 1 / -1;
+      background-color: #f8f9fe;
+      border-radius: 0.8rem;
+      height: 5rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    &-time {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #999;
+
+        &--active {
+            color: #0a254d;
+        }
+    }
+
+    &-switch {
+      appearance: none;
+      width: 4rem;
+      height: 2rem;
+      background-color: rgb(10, 37, 77);
+      border-radius: 2rem;
+      position: relative;
+      outline: none;
+      cursor: pointer;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 1.2rem;
+        height: 1.2rem;
+        background: #fff;
+        border-radius: 2rem;
+        transition: transform 0.2s;
+      }
+
+      &:checked:before {
+        transform: translateX(2rem);
+      }
+    }
+
+  }
+
+  //BUTTONS
+
   &__buttons-row {
     display: flex;
     justify-content: space-between;
@@ -173,13 +268,13 @@
 
   &__back-button {
     color: #666;
-    transition: all .2s;
+    transition: all 0.2s;
     background-color: transparent;
     opacity: 0;
     visibility: hidden;
 
     &:hover {
-        color: rgb(10, 37, 77);
+      color: rgb(10, 37, 77);
     }
   }
 
@@ -187,13 +282,11 @@
     color: #fff;
     padding: 1.4rem 2.2rem;
     background-color: rgb(10, 37, 77);
-    border-radius: .5rem;
-    transition: all .2s;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
 
     &:hover {
-        background-color: rgba(10, 37, 77, 0.75);
+      background-color: rgba(10, 37, 77, 0.75);
     }
   }
-
-
 }
