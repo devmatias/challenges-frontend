@@ -40,11 +40,38 @@
         <h3 class="sidebar__steps-data">Summary</h3>
       </div>
     </div>
-    <div class="form">
-      <form action="#" class="form__info-page">
-        <h1 class="">Personal info</h1>
-      </form>
-    </div>
+    <form action="#" class="form">       
+      <div class="form__heading">
+        <h1 class="form__title">Personal info</h1>
+        <p class="form__subtitle">Please provide your name, email address, and phone number.</p>
+      </div>
+      <div class="form__info-page form__main">
+        <label for="input-name" class="form__info-page--labels">Name</label>
+        <input type="text" class="form__info-page--input" id="input-name" placeholder="e.g. Stephen King" required>
+        <span class="form__info-page--name-validation">This field is required</span>
+        <label for="input-email" class="form__info-page--labels">Email Address</label>
+        <input type="email" class="form__info-page--input" id="input-email" placeholder="e.g. stephenking@lorem.com" required>
+        <span class="form__info-page--email-validation">This field is required</span>
+        <label for="input-phone" class="form__info-page--labels">Phone Number</label>
+        <input type="text" class="form__info-page--input" id="input-phone" placeholder="e.g. +1 234 567 890" required>
+        <span class="form__info-page--phone-validation">This field is required</span>
+      </div>
+      <div class="form__select-plan form__main--active">
+        <div class="form__plan form__plan--active">
+          <svg class="form__plan-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g fill="none" fill-rule="evenodd"><circle cx="20" cy="20" r="20" fill="#FFAF7E"/><path fill="#FFF" fill-rule="nonzero" d="M24.995 18.005h-3.998v5.998h-2v-5.998H15a1 1 0 0 0-1 1V29a1 1 0 0 0 1 1h9.995a1 1 0 0 0 1-1v-9.995a1 1 0 0 0-1-1Zm-5.997 8.996h-2v-1.999h2v2Zm2-11.175a2.999 2.999 0 1 0-2 0v2.18h2v-2.18Z"/></g></svg>
+          <h3 class="form__plan-mode">Arcade</h3>
+          <p class="form__plan-price">$9/mo</p>
+          <p class="form__plan-extra-time">2 months free</p>
+        </div>
+        <div class="form__cards"></div>
+        <div class="form__cards"></div>
+        <div class="form__plan-period"></div>
+      </div>
+      <div class="form__buttons-row">
+        <button class="form__back-button">Go Back</button>
+        <button class="form__next-step">Next Step</button>
+      </div>
+    </form>
   </div>
   Step 1
   Your info

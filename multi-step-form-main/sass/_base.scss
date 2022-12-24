@@ -1,23 +1,43 @@
+@font-face {
+  font-family: "Ubuntu";
+  src: url(../assets/fonts/Ubuntu-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url(../assets/fonts/Ubuntu-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url(../assets/fonts/Ubuntu-Medium.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
 *,
 *::after,
 *::before {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    box-sizing: border-box;
-    font-size: 62.5%;
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 body {
-    font-family: 'Verdana', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    background-image: url(../assets/images/cool-background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-image: url(../assets/images/cool-background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
