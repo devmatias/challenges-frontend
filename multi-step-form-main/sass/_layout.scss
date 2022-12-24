@@ -1,0 +1,12 @@
+.content {
+    max-width: 90rem;
+    height: 60rem;
+    background-color: white;
+    margin: 10rem auto;
+    border-radius: 1rem;
+    padding: 1.5rem;
+
+    display: grid;
+    grid-template-columns: 274px 1fr;
+}
+

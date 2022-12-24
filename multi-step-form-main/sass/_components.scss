@@ -1,0 +1,53 @@
+.sidebar {
+    background-image: url(../assets/images/bg-sidebar-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2.2rem;
+    
+    display: grid;
+    grid-auto-rows: 6rem;
+    gap: 1rem;
+    align-items: center;
+
+    &__steps {
+        display: grid;
+        grid-template-columns: 4rem 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 1.2rem;
+        padding: 1rem;
+        
+
+        &-position {
+            border: 1px solid #fff;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50rem;
+            height: 3.5rem;
+            width: 3.5rem;
+            grid-row: 1 / span 2;
+            cursor: pointer;
+            background-color: transparent;
+
+            &--active {
+                color: black;
+                background-color: #e6e6e6;
+            }
+        }
+
+        &-text {
+            align-self: end;
+            line-height: 1.3rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        &-data {
+            align-self: start;
+            line-height: 1.8rem;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
