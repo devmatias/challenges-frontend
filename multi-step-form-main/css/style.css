@@ -80,7 +80,7 @@ body {
 .form {
   padding: 3rem 8rem 2rem;
   display: grid;
-  grid-template-rows: 0.3fr 1fr 0.3fr; }
+  grid-template-rows: 10rem auto 10rem; }
   .form__heading {
     display: flex;
     flex-direction: column; }
@@ -119,7 +119,7 @@ body {
         -webkit-box-shadow: 0 0 0 1000px white inset !important; }
       .form__info-page--input:focus {
         outline: none;
-        border: 1px solid #0a254d; }
+        border: 1px solid #1f5ebb; }
       .form__info-page--input:focus:invalid {
         border: 1px solid red; }
     .form__info-page--name-validation {
@@ -142,7 +142,7 @@ body {
       display: inline; }
   .form__select-plan {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 2fr 1fr;
+    grid-auto-rows: min-content;
     row-gap: 3rem;
     column-gap: 2rem; }
   .form__plan {
@@ -151,9 +151,13 @@ body {
     padding: 1.5rem;
     border: 1px solid #e6e6e6;
     border-radius: 10px;
-    gap: 3px; }
+    gap: 3px;
+    cursor: pointer; }
+    .form__plan--active {
+      background-color: #f8f9fe;
+      border: 1px solid #1f5ebb; }
     .form__plan-img {
-      margin-bottom: auto; }
+      margin-bottom: 8rem; }
     .form__plan-mode {
       font-size: 1.6rem;
       line-height: 1.8rem;
@@ -163,6 +167,7 @@ body {
       font-size: 1.1rem;
       line-height: 1.5rem; }
     .form__plan-extra-time {
+      display: none;
       color: #0a254d;
       line-height: 1.1rem; }
     .form__plan-period {
@@ -170,6 +175,7 @@ body {
       background-color: #f8f9fe;
       border-radius: 0.8rem;
       height: 5rem;
+      margin-bottom: auto;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -201,6 +207,114 @@ body {
         transition: transform 0.2s; }
       .form__plan-switch:checked:before {
         transform: translateX(2rem); }
+  .form__pick-addons {
+    row-gap: 2rem;
+    align-content: flex-start; }
+  .form__addons {
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    height: 8rem;
+    display: grid;
+    grid-template-columns: 5rem 1fr 6rem;
+    align-items: center;
+    align-content: center;
+    cursor: pointer; }
+    .form__addons:hover {
+      border: 1px solid #1f5ebb; }
+    .form__addons--active {
+      background-color: #f8f9fe;
+      border: 1px solid #1f5ebb; }
+    .form__addons-checkbox {
+      height: 1.6rem;
+      grid-column: 1 / 2;
+      grid-row: 1 / span 2;
+      cursor: pointer; }
+    .form__addons-service {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #0a254d; }
+    .form__addons-text {
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
+      font-size: 1.2rem;
+      color: #999; }
+    .form__addons-price {
+      grid-column: 3 / 4;
+      grid-row: 1 / span 2;
+      font-size: 1.2rem;
+      color: #1f5ebb; }
+  .form__finishing {
+    align-content: flex-start; }
+  .form__chosed-plan {
+    display: grid;
+    padding: 2rem;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 1rem;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    align-content: center;
+    background-color: #f8f9fe;
+    border-radius: 1rem; }
+    .form__chosed-plan-text {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0a254d; }
+    .form__chosed-plan-change {
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+      justify-self: flex-start;
+      border: none;
+      color: #999;
+      font-family: inherit;
+      line-height: 1.1rem;
+      background-color: transparent;
+      border-bottom: 1px solid #999;
+      cursor: pointer; }
+      .form__chosed-plan-change:hover {
+        color: blueviolet; }
+    .form__chosed-plan-price {
+      grid-row: 1 / 3;
+      grid-column: 2 / 3;
+      justify-self: flex-end;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0a254d; }
+    .form__chosed-plan hr {
+      margin: 2.5rem 0 1.5rem;
+      grid-row: 3 / 4;
+      grid-column: 1 / -1;
+      border: none;
+      border-bottom: 1px solid #e6e6e6; }
+  .form__addons-chosed {
+    grid-column: 1 / -1;
+    display: none;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 3rem; }
+    .form__addons-chosed--active {
+      display: flex; }
+    .form__addons-chosed-text {
+      color: #999;
+      font-size: 1.2rem; }
+    .form__addons-chosed-price {
+      font-size: 1.3rem;
+      color: #0a254d; }
+  .form__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem; }
+    .form__total-text {
+      color: #999;
+      font-size: 1.2rem; }
+    .form__total-price {
+      font-size: 2rem;
+      font-weight: 500;
+      color: #1f5ebb; }
   .form__buttons-row {
     display: flex;
     justify-content: space-between;
