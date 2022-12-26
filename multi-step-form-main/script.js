@@ -1,8 +1,11 @@
+const form = document.querySelector(".form");
 const getStepPosition = document.querySelectorAll(".sidebar__steps-position");
 const getFormSteps = document.querySelectorAll(".form__main");
 const getPlans = document.querySelectorAll(".form__plan");
 const getBackButton = document.querySelector(".form__back-button");
 const getNextStepButton = document.querySelector(".form__next-step");
+const getChangeButton = document.querySelector(".form__chosed-plan-change");
+const getFinalMessage = document.querySelector(".final-message");
 
 const selectStepPosition = (step) => {
   getStepPosition.forEach((allSteps) => {
@@ -47,6 +50,23 @@ const changeHeading = (step) => {
   }
 };
 
+const setInputPhonePattern = () => {
+  const input = document.querySelector("#input-phone");
+  input.addEventListener('focus', () => {
+    if (input.value.length === 0) {
+      input.value = '+';
+    }
+  });
+  input.addEventListener('input', () => {
+    const value = input.value;
+    if (value.charAt(0) !== '+') {
+      input.value = '+' + value.substring(1);
+    }
+  });
+};
+
+setInputPhonePattern();
+
 const displayPlanExtraTime = (isYearly) => {
   const getPlanExtraTime = document.querySelectorAll(".form__plan-extra-time");
   getPlanExtraTime.forEach((element) => {
@@ -75,40 +95,67 @@ const checkPeriodPrices = (place, isYearly) => {
       ? (element.innerHTML = yearPrices[index])
       : (element.innerHTML = monthPrices[index]);
   });
-}
+};
 
 const changeAddonsPeriodPrices = (isYearly) => {
   const getAddonsPrices = document.querySelectorAll(".form__addons-price");
-  const getAddonsChosedPrices = document.querySelectorAll(".form__addons-chosed-price");
-  checkPeriodPrices(getAddonsPrices, isYearly)
-  checkPeriodPrices(getAddonsChosedPrices, isYearly)
+  const getAddonsChosedPrices = document.querySelectorAll(
+    ".form__addons-chosed-price"
+  );
+  checkPeriodPrices(getAddonsPrices, isYearly);
+  checkPeriodPrices(getAddonsChosedPrices, isYearly);
 };
 
 const compilePlanInfo = (chosedPlan) => {
   const chosedPlanText = document.querySelector(".form__chosed-plan-text");
-  chosedPlanText.innerHTML = chosedPlan.querySelector(".form__plan-mode").innerHTML;
+  chosedPlanText.innerHTML =
+    chosedPlan.querySelector(".form__plan-mode").innerHTML;
   const chosedPlanPrice = document.querySelector(".form__chosed-plan-price");
-  chosedPlanPrice.innerHTML = chosedPlan.querySelector(".form__plan-price").innerHTML;
+  chosedPlanPrice.innerHTML =
+    chosedPlan.querySelector(".form__plan-price").innerHTML;
 };
 
 const displayActiveAddons = () => {
-  const getAddonsActive = document.querySelectorAll('.form__addons--active');
-  const getAddonsChosed = document.querySelectorAll('.form__addons-chosed');
+  const getAddonsActive = document.querySelectorAll(".form__addons--active");
+  const getAddonsChosed = document.querySelectorAll(".form__addons-chosed");
   const activeAddons = [];
   getAddonsActive.forEach((addon) => {
-    activeAddons.push(addon.querySelector('.form__addons-service').innerHTML)
-  })
+    activeAddons.push(addon.querySelector(".form__addons-service").innerHTML);
+  });
   getAddonsChosed.forEach((addon) => {
-    const addonText = addon.querySelector('.form__addons-chosed-text').innerHTML
+    const addonText = addon.querySelector(
+      ".form__addons-chosed-text"
+    ).innerHTML;
     if (activeAddons.includes(addonText)) {
-      addon.classList.add('form__addons-chosed--active');
+      addon.classList.add("form__addons-chosed--active");
     } else {
-      addon.classList.remove('form__addons-chosed--active');
+      addon.classList.remove("form__addons-chosed--active");
     }
-  })
-}
+  });
+};
 
-
+const refreshTotalPrice = () => {
+  const totalPrice = [];
+  const planPriceText = document.querySelector(
+    ".form__chosed-plan-price"
+  ).innerHTML;
+  totalPrice.push(planPriceText.replace(/[^\d.]+/g, ""));
+  const period = planPriceText.replace(/^[^/]*\//, "");
+  const getActiveAddons = document.querySelectorAll(
+    ".form__addons-chosed--active"
+  );
+  getActiveAddons.forEach((element) => {
+    const textPriceElement = element.querySelector(
+      ".form__addons-chosed-price"
+    ).innerHTML;
+    totalPrice.push(textPriceElement.replace(/[^\d.]+/g, ""));
+  });
+  const totalPriceElement = document.querySelector(".form__total-price");
+  totalPriceElement.innerHTML = `+$${totalPrice.reduce(
+    (sum, value) => sum + Number(value),
+    0
+  )}/${period}`;
+};
 
 const changePlan = () => {
   getPlans.forEach((plan) => {
@@ -118,6 +165,7 @@ const changePlan = () => {
       });
       plan.classList.add("form__plan--active");
       compilePlanInfo(plan);
+      refreshTotalPrice();
     });
   });
 };
@@ -131,14 +179,15 @@ const changePlanPeriod = () => {
     getPlanTime.forEach((plan) => {
       plan.classList.toggle("form__plan-time--active");
     });
-    const planActive = document.querySelector('.form__plan--active')
+    const planActive = document.querySelector(".form__plan--active");
     const isYearly = getPlanTime[1].classList.contains(
       "form__plan-time--active"
     );
     displayPlanExtraTime(isYearly);
     changePlanPeriodPrices(isYearly);
-    compilePlanInfo(planActive)
+    compilePlanInfo(planActive);
     changeAddonsPeriodPrices(isYearly);
+    refreshTotalPrice();
   });
 };
 
@@ -154,6 +203,7 @@ const selectAddons = () => {
           addon.classList.toggle("form__addons--active");
       });
       displayActiveAddons();
+      refreshTotalPrice();
     });
   });
 };
@@ -169,14 +219,38 @@ const displayBackButton = (step) => {
     : (getBackButton.style.visibility = "hidden");
 };
 
-const displayConfirmButton = (step) => {
-  step.innerHTML === "4"
-    ? (getNextStepButton.innerHTML = "Confirm")
-    : (getNextStepButton.innerHTML = "Next Step");
+const displayFinalMessage = () => {
+  form.style.display = "none";
+  getFinalMessage.style.display = "flex";
+  getStepPosition.forEach((step) => {
+    step.removeEventListener("click", checkInputsValidity);
+  });
 };
 
-const changePosition = (button, direction) => {
-  button.addEventListener("click", () => {
+const displayConfirmButton = (step) => {
+  if (step.innerHTML === "4") {
+    getNextStepButton.innerHTML = "Confirm";
+    getNextStepButton.style.backgroundColor = "blueviolet";
+    getNextStepButton.addEventListener("click", displayFinalMessage);
+  } else {
+    getNextStepButton.innerHTML = "Next Step";
+    getNextStepButton.style.backgroundColor = "rgb(10, 37, 77)";
+    getNextStepButton.removeEventListener("click", displayFinalMessage);
+  }
+};
+
+const addStepFunctions = (step) => {
+  selectStepPosition(step);
+  selectStepPage(step);
+  changeHeading(step);
+  displayBackButton(step);
+  displayConfirmButton(step);
+};
+
+const changeStep = (direction) => {
+  if (!form.checkValidity()) {
+    form.reportValidity();
+  } else {
     const findPositionActive = document.querySelector(
       ".sidebar__steps-position--active"
     ).innerHTML;
@@ -186,27 +260,37 @@ const changePosition = (button, direction) => {
         Number(step.innerHTML) === Number(findPositionActive) + direction
     );
     if (nextStep) {
-      selectStepPosition(nextStep);
-      selectStepPage(nextStep);
-      changeHeading(nextStep);
-      displayBackButton(nextStep);
-      displayConfirmButton(nextStep);
+      addStepFunctions(nextStep);
     }
+  }
+};
+
+const checkInputsValidity = () => {
+  const isActive = this.classList.contains("sidebar__steps-position--active");
+  if (!form.checkValidity() && !isActive) {
+    form.reportValidity();
+  } else {
+    addStepFunctions(this);
+  }
+};
+
+const setButtons = () => {
+  getNextStepButton.addEventListener("click", () => {
+    changeStep(1);
+  });
+  getBackButton.addEventListener("click", () => {
+    changeStep(-1);
+  });
+  getChangeButton.addEventListener("click", () => {
+    changeStep(-2);
   });
 };
 
-changePosition(getNextStepButton, 1);
-changePosition(getBackButton, -1);
+setButtons();
 
 const selectStep = () => {
   getStepPosition.forEach((step) => {
-    step.addEventListener("click", () => {
-      selectStepPosition(step);
-      selectStepPage(step);
-      changeHeading(step);
-      displayBackButton(step);
-      displayConfirmButton(step);
-    });
+    step.addEventListener("click", checkInputsValidity);
   });
 };
 

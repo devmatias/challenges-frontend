@@ -448,13 +448,39 @@
 
   &__next-step {
     color: #fff;
-    padding: 1.4rem 2.2rem;
+    padding: 1.4rem 0;
+    width: 12rem;
     background-color: rgb(10, 37, 77);
     border-radius: 0.5rem;
     transition: all 0.2s;
 
     &:hover {
-      background-color: rgba(10, 37, 77, 0.75);
+      opacity: 0.75;
     }
+  }
+}
+
+.final-message {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__img {
+    margin-bottom: 2.5rem;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+    font-size: 2.25rem;
+    color: #0a254d;
+    font-weight: bold;
+  }
+  
+  &__subtitle {
+    max-width: 38.5rem;
+    color: #999;
+    font-size: 1.4rem;
+    text-align: center;
   }
 }
