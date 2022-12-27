@@ -1,0 +1,27 @@
+.content {
+    max-width: 90rem;
+    height: 59.8rem;
+    background-color: white;
+    margin: 10rem auto;
+    border-radius: 1rem;
+    padding: 1.5rem;
+
+    display: grid;
+    grid-template-columns: 274px 1fr;
+
+    @media only screen and (max-width:900px) {
+        grid-template-columns: repeat(8, 1fr);
+        height: auto;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    @media only screen and (max-width:600px) {
+        grid-template-columns: repeat(20, 1fr);
+        padding: 0;
+        background-color: #f8f9fe;
+        grid-template-rows: auto auto auto;
+        position: relative;
+    }
+}
+
