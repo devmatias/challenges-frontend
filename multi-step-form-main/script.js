@@ -6,6 +6,8 @@ const getBackButton = document.querySelector(".form__back-button");
 const getNextStepButton = document.querySelector(".form__next-step");
 const getChangeButton = document.querySelector(".form__chosed-plan-change");
 const getFinalMessage = document.querySelector(".final-message");
+const getContent = document.querySelector('.content')
+const getButtonsRow = document.querySelector('.form__buttons-row')
 
 const selectStepPosition = (step) => {
   getStepPosition.forEach((allSteps) => {
@@ -219,12 +221,18 @@ const displayBackButton = (step) => {
     : (getBackButton.style.visibility = "hidden");
 };
 
+const handleClick = (event) => {
+  checkInputsValidity(event.currentTarget)
+}
+
 const displayFinalMessage = () => {
   form.style.display = "none";
   getFinalMessage.style.display = "flex";
+  getButtonsRow.style.display = 'none'
   getStepPosition.forEach((step) => {
-    step.removeEventListener("click", checkInputsValidity);
+    step.removeEventListener("click", handleClick);
   });
+
 };
 
 const displayConfirmButton = (step) => {
@@ -265,12 +273,12 @@ const changeStep = (direction) => {
   }
 };
 
-const checkInputsValidity = () => {
-  const isActive = this.classList.contains("sidebar__steps-position--active");
+const checkInputsValidity = (step) => {
+  const isActive = step.classList.contains("sidebar__steps-position--active");
   if (!form.checkValidity() && !isActive) {
     form.reportValidity();
   } else {
-    addStepFunctions(this);
+    addStepFunctions(step);
   }
 };
 
@@ -288,10 +296,27 @@ const setButtons = () => {
 
 setButtons();
 
+
+
 const selectStep = () => {
   getStepPosition.forEach((step) => {
-    step.addEventListener("click", checkInputsValidity);
+    step.addEventListener("click", handleClick);
   });
 };
 
 selectStep();
+
+const resizeRowButtons = () => {
+  if (window.innerWidth < 600) {
+    form.removeChild(getButtonsRow);
+    getContent.appendChild(getButtonsRow);
+  } else {
+    getContent.removeChild(getButtonsRow);
+    form.appendChild(getButtonsRow);
+  }
+}
+
+window.addEventListener("resize", resizeRowButtons);
+
+resizeRowButtons();
+

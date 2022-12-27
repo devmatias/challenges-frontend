@@ -40,4 +40,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+
+  @media only screen and (max-width: 600px) {
+    background-color: #f8f9fe;
+    background-image: none;
+  }
 }
